@@ -27,16 +27,40 @@ body {
   color: #ffffff; }
 
 #masterContainer {
-  width: 90%;
+  width: 100%;
   margin: 0 auto; }
+
+.blockContainer {
+  width: 100%; }
 
 #landingPageContainer {
   height: 100vh;
+  width: 80%;
+  margin: 0 auto;
   text-align: center; }
   #landingPageContainer p {
-    font-size: 1.3em; }
+    padding-top: 10px;
+    font-size: 1.5em;
+    letter-spacing: 1px; }
 
 #landingPageContent {
   padding-top: 200px; }
+
+.buttonContainer {
+  padding-top: 50px;
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; }
+
+.button {
+  letter-spacing: 6px;
+  border: 2px solid #0eedb9;
+  padding: 6px 23px 6px 23px;
+  border-radius: 15px; }
+
+#serviceContainer {
+  height: 400px;
+  background-color: #0eedb9; }
 
 /*# sourceMappingURL=style.css.map */
