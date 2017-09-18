@@ -130,21 +130,6 @@ body{
 	margin: 0 auto;
 }
 
-.blockContainer{
-	width: 100%;
-	text-align: center;
-	padding: 70px 0px 70px 0px;
-}
-
-.blockText{
-	width: 50%;
-	margin: 0 auto;
-	padding-top: 40px;
-	font-size: 1.4em;
-	line-height: 40px;
-	letter-spacing: 1px;
-}
-
 .primaryText{
 	color: $primaryColor;
 }
@@ -159,6 +144,7 @@ body{
 	margin: 0 auto;
 	text-align: center;
 	position: relative;
+	display: none;
 
 	p{
 		padding-top: 10px;
@@ -175,7 +161,7 @@ body{
 #downArrow{
 	min-width: 50px;
 	max-width: 50px;
-	margin-top: 170px;
+	margin-top: 100px;
 	transition-duration: 100ms;
 	cursor: pointer;
 	opacity: 0.7;
@@ -184,6 +170,18 @@ body{
 		opacity: 1;
 		max-width: 53px;
 	}
+}
+
+.waveContainer{
+	margin-top: -90px;
+	margin-bottom: -10px;
+	max-width: 100%;
+	pointer-events: none;
+	display: none;
+}
+
+.wave{
+	max-width: 100%;
 }
 
 .buttonContainer{
@@ -220,11 +218,37 @@ body{
 	transition-duration: 300ms;
 }
 
+.blockContainer{
+	width: 100%;
+	text-align: center;
+	padding: 90px 0px 90px 0px;
+}
+
+.blockText{
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 40px;
+	font-size: 1.4em;
+	line-height: 40px;
+	letter-spacing: 1px;
+}
+
+
 #serviceContainer{
 	background-color: $secondaryColor;
 }
 
+#serviceContent{
+	margin-top: -100px;
+	display: none;
+}
+
+.hidden{
+	display: none;
+}
+
 #teamContainer{
+	height: 600px;
 }
 
 #contactContainer{
