@@ -11,3 +11,14 @@ $.ajax({
 		console.log("Error with ajax request");
 	}
 });
+
+$("#hamburgerMenu").click(function(){
+	$("#logoContainer").css('z-index','60');
+	$("#overlayMenu").fadeIn(300);
+	$("body").css('overflow','hidden');
+});
+
+$("#closeMenu").click(function(){
+	$("#overlayMenu").fadeOut(300);
+	$("body").css('overflow','auto');
+});

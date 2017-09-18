@@ -12,6 +12,9 @@ h3 {
   font-weight: 600;
   font-size: 2em; }
 
+ul {
+  list-style-type: none; }
+
 .importantText {
   color: #0eedb9; }
 
@@ -43,6 +46,50 @@ nav {
   width: 30%; }
   #hamburgerMenu:hover {
     opacity: 0.5; }
+
+#overlayMenu {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #0eedb9;
+  color: #0a0b27;
+  z-index: 40;
+  text-align: right;
+  padding: 80px;
+  display: none; }
+  #overlayMenu li {
+    margin-bottom: 40px;
+    font-size: 3em;
+    font-weight: 600; }
+
+.menuListItem {
+  position: relative;
+  width: auto;
+  float: right;
+  clear: both;
+  cursor: pointer; }
+
+.listHover {
+  transition-duration: 300ms;
+  width: 0%;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: white; }
+
+#closeMenu {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 40px;
+  cursor: pointer; }
+  #closeMenu img {
+    height: 100%; }
+    #closeMenu img:hover {
+      opacity: 0.6; }
+
+.clicked {
+  display: block !important; }
 
 body {
   background-color: #0a0b27;
