@@ -17,14 +17,32 @@ h3 {
 
 nav {
   width: 100%;
-  position: fixed; }
+  position: fixed;
+  z-index: 20; }
 
 #navContainer {
   width: 90%;
   margin: 0 auto;
   padding: 20px 0px 20px 0px;
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
+
+.navItem {
+  width: 150px;
+  text-align: right; }
+
+#logo {
+  max-width: 100%;
+  cursor: pointer; }
+  #logo:hover {
+    opacity: 0.7; }
+
+#hamburgerMenu {
+  cursor: pointer;
+  width: 30%; }
+  #hamburgerMenu:hover {
+    opacity: 0.5; }
 
 body {
   background-color: #0a0b27;
@@ -38,7 +56,7 @@ body {
 .blockContainer {
   width: 100%;
   text-align: center;
-  padding-top: 50px; }
+  padding: 70px 0px 70px 0px; }
 
 .blockText {
   width: 50%;
@@ -74,9 +92,11 @@ body {
   max-width: 50px;
   margin-top: 170px;
   transition-duration: 100ms;
-  cursor: pointer; }
+  cursor: pointer;
+  opacity: 0.7; }
   #downArrow:hover {
-    max-width: 55px; }
+    opacity: 1;
+    max-width: 53px; }
 
 .buttonContainer {
   padding-top: 50px;
@@ -108,14 +128,9 @@ body {
   transition-duration: 300ms; }
 
 #serviceContainer {
-  height: 500px;
   background-color: #0eedb9; }
 
-#teamContainer {
-  height: 600px; }
-
 #contactContainer {
-  height: 500px;
   background-color: #0eedb9; }
 
 /*# sourceMappingURL=style.css.map */
