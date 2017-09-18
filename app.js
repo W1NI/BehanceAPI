@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.static("./public"));
 app.use("/module", express.static(path.join(__dirname, "node_modules/")));
 app.use('/scripts', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+app.use('/img', express.static(path.join(__dirname, 'public/img')));
 
 app.use(function(request, response, next){
 	console.log(`${request.method} request for ${request.url}`);

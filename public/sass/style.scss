@@ -9,8 +9,14 @@ $primaryFont: 'Raleway', sans-serif;
 }
 
 h2{
-	font-size: 4em;
+	font-size: 5em;
 	font-weight: 600;
+}
+
+h3{
+	letter-spacing: 10px;
+	font-weight: 600;
+	font-size: 2em;
 }
 
 .importantText{
@@ -43,6 +49,25 @@ body{
 
 .blockContainer{
 	width: 100%;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.blockText{
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 40px;
+	font-size: 1.4em;
+	line-height: 40px;
+	letter-spacing: 1px;
+}
+
+.primaryText{
+	color: $primaryColor;
+}
+
+.contrastText{
+	color: $secondaryColor;
 }
 
 #landingPageContainer{
@@ -50,16 +75,30 @@ body{
 	width: 80%;
 	margin: 0 auto;
 	text-align: center;
+	position: relative;
 
 	p{
 		padding-top: 10px;
-		font-size: 1.5em;
+		font-size: 1.8em;
 		letter-spacing: 1px;
+		margin-bottom: 40px;
 	}
 }
 
 #landingPageContent{
 	padding-top: 200px;
+}
+
+#downArrow{
+	min-width: 50px;
+	max-width: 50px;
+	margin-top: 170px;
+	transition-duration: 100ms;
+	cursor: pointer;
+
+	&:hover{
+		max-width: 55px;
+	}
 }
 
 .buttonContainer{
@@ -97,6 +136,15 @@ body{
 }
 
 #serviceContainer{
-	height: 400px;
+	height: 500px;
+	background-color: $secondaryColor;
+}
+
+#teamContainer{
+	height: 600px;
+}
+
+#contactContainer{
+	height: 500px;
 	background-color: $secondaryColor;
 }
