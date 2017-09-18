@@ -26,6 +26,7 @@ h3{
 nav{
 	width: 100%;
 	position: fixed;
+	z-index: 20;
 }
 
 #navContainer{
@@ -34,6 +35,30 @@ nav{
 	padding: 20px 0px 20px 0px;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+}
+
+.navItem{
+	width: 150px;
+	text-align: right;
+}
+
+#logo{
+	max-width: 100%;
+	cursor: pointer;
+
+	&:hover{
+		opacity: 0.7;
+	}
+}
+
+#hamburgerMenu{
+	cursor: pointer;
+	width: 30%;
+
+	&:hover{
+		opacity: 0.5;
+	}
 }
 
 body{
@@ -50,7 +75,7 @@ body{
 .blockContainer{
 	width: 100%;
 	text-align: center;
-	padding-top: 50px;
+	padding: 70px 0px 70px 0px;
 }
 
 .blockText{
@@ -95,9 +120,11 @@ body{
 	margin-top: 170px;
 	transition-duration: 100ms;
 	cursor: pointer;
+	opacity: 0.7;
 
 	&:hover{
-		max-width: 55px;
+		opacity: 1;
+		max-width: 53px;
 	}
 }
 
@@ -136,15 +163,12 @@ body{
 }
 
 #serviceContainer{
-	height: 500px;
 	background-color: $secondaryColor;
 }
 
 #teamContainer{
-	height: 600px;
 }
 
 #contactContainer{
-	height: 500px;
 	background-color: $secondaryColor;
 }
