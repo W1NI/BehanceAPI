@@ -68,7 +68,6 @@ body{
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
-
 }
 
 .button{
@@ -76,10 +75,28 @@ body{
 	border: 2px solid $secondaryColor;
 	padding: 6px 23px 6px 23px;
 	border-radius: 15px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	&:hover{
+		font-weight: 600;
+		color: $primaryColor;
+	}
+}
+
+.buttonHoverEffect{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: $secondaryColor;
+	height: 100%;
+	width: 0%;
+	z-index: -1;
+	transition-duration: 300ms;
 }
 
 #serviceContainer{
 	height: 400px;
 	background-color: $secondaryColor;
 }
-

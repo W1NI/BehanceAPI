@@ -6,11 +6,8 @@ $.ajax({
 	dataType: "jsonp",
 	success: function(data){
 		console.log(data);
-		var profileImage = data.user.images[276];
-		console.log(profileImage);
-		$("body").append(`<img src =${profileImage}>`)
 	},
 	error: function(){
-		console.log("IT'S ERROR DAY BRO");
+		console.log("Error with ajax request");
 	}
 });
