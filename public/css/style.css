@@ -198,7 +198,25 @@ body {
 #teamContainer {
   height: 600px; }
 
+#overlayTeam {
+  z-index: 41;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #353F45; }
+
+.profileSection {
+  z-index: 50;
+  background-color: #151D21;
+  height: 100vh;
+  width: 23%; }
+
+#profileLogoContainer {
+  width: 250px;
+  background-color: blue;
+  margin: 0 auto; }
+  #profileLogoContainer img {
+    width: 100%; }
+
 #contactContainer {
   background-color: #0eedb9; }
-
-/*# sourceMappingURL=style.css.map */
