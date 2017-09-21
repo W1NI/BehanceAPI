@@ -2,6 +2,13 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box; }
+  *::-webkit-scrollbar {
+    display: none; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: #0eedb9; }
 
 h2 {
   font-size: 5em;
@@ -21,7 +28,9 @@ ul {
 nav {
   width: 100%;
   position: fixed;
-  z-index: 20; }
+  z-index: 20;
+  background-color: #0a0b27;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7); }
 
 #navContainer {
   width: 90%;
@@ -99,6 +108,8 @@ body {
 #masterContainer {
   width: 100%;
   margin: 0 auto; }
+  #masterContainer::-webkit-scrollbar {
+    display: none; }
 
 .primaryText {
   color: #0a0b27; }
@@ -113,11 +124,12 @@ body {
   text-align: center;
   position: relative;
   display: none; }
-  #landingPageContainer p {
-    padding-top: 10px;
-    font-size: 1.8em;
-    letter-spacing: 1px;
-    margin-bottom: 40px; }
+
+.homepageBlurb {
+  padding-top: 10px;
+  font-size: 1.8em;
+  letter-spacing: 1px;
+  margin-bottom: 40px; }
 
 #landingPageContent {
   padding-top: 200px; }
@@ -148,7 +160,7 @@ body {
   width: 55%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-around; }
 
 .button {
   letter-spacing: 6px;
@@ -158,6 +170,9 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer; }
+  .button p {
+    position: relative;
+    z-index: 1; }
   .button:hover {
     font-weight: 600;
     color: #0a0b27; }
@@ -169,7 +184,7 @@ body {
   background-color: #0eedb9;
   height: 100%;
   width: 0%;
-  z-index: -1;
+  z-index: 0;
   transition-duration: 300ms; }
 
 .blockContainer {
@@ -221,7 +236,6 @@ body {
   width: 130px;
   height: 130px;
   border-radius: 100%;
-  background-color: white;
   overflow: hidden;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -256,7 +270,126 @@ body {
   #profileLogoContainer img {
     width: 100%; }
 
+.profileButtonContainer {
+  margin: 0 auto;
+  width: 300px; }
+
+.profileButton {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%; }
+
 #contactContainer {
   background-color: #0eedb9; }
+
+#overlayProfile {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 100px;
+  position: relative;
+  display: none; }
+
+#sideBar {
+  background: #0a0b27;
+  width: 30%;
+  overflow: auto;
+  padding-top: 50px; }
+
+#sideBarInfoContainer {
+  color: white;
+  padding-bottom: 50px;
+  line-height: 45px;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1.2em;
+  letter-spacing: 1px; }
+  #sideBarInfoContainer .fa {
+    color: white; }
+
+.sideBarInfo {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between; }
+
+.sideBarHeader {
+  color: #0eedb9; }
+
+#ownerName {
+  font-size: 1.4em;
+  color: white;
+  margin-bottom: 10px; }
+
+#projectProfileImage {
+  margin-bottom: 30px; }
+
+#projectContainer {
+  overflow: auto;
+  width: 70%;
+  background-color: #0a0b27;
+  padding-top: 50px;
+  padding-bottom: 150px;
+  text-align: center; }
+
+#projectImagesContainer {
+  width: 90%;
+  margin: 0 auto; }
+
+.projectImage {
+  width: 100%;
+  height: auto;
+  padding: 0; }
+  .projectImage img {
+    width: 100%; }
+
+#projectTitle {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 15px; }
+
+#projectStats {
+  margin-bottom: 20px; }
+
+.stat {
+  font-size: 1em;
+  display: inline-block;
+  padding: 0px 11px 0px 11px; }
+
+.fa {
+  color: #0eedb9;
+  padding-right: 10px; }
+
+#behanceLink {
+  transition-duration: 200ms;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  position: relative;
+  width: auto;
+  display: inline-block; }
+  #behanceLink:hover {
+    border-color: #0eedb9; }
+
+.linkHover {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  transition-duration: 200ms;
+  background-color: white; }
+
+.block1 {
+  width: 80%;
+  margin: 0 auto;
+  height: 600px;
+  background-color: #c8d3f7; }
+
+.block2 {
+  width: 80%;
+  margin: 0 auto;
+  height: 600px;
+  background-color: #1544dd; }
 
 /*# sourceMappingURL=style.css.map */
