@@ -195,8 +195,46 @@ body {
 .hidden {
   display: none; }
 
-#teamContainer {
-  height: 600px; }
+#teamContent {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+#teamHeader {
+  width: 100%;
+  margin-bottom: 50px;
+  flex-grow: 1; }
+
+.teamProfileContainer {
+  text-align: center;
+  width: 33%;
+  margin-bottom: 40px; }
+
+.teamMemberName {
+  font-size: 1.2em;
+  letter-spacing: 4px;
+  text-transform: uppercase; }
+
+.profileImage {
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background-color: white;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  transition-duration: 300ms;
+  cursor: pointer;
+  border: 4px solid #0a0b27; }
+  .profileImage img {
+    max-width: 100%; }
+  .profileImage:hover {
+    border-color: #0eedb9; }
+
+.spotlight {
+  opacity: 0.3; }
 
 #overlayTeam {
   z-index: 41;

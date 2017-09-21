@@ -1,9 +1,14 @@
 var express = require('express');
 var cors = require('cors');
 var path = require('path');
+var behanceIDs = require("./data");
 var app = express();
 
 app.use(cors());
+
+app.get("/behanceIDs", function (request, response){
+	response.json(behanceIDs);
+});
 
 app.use(express.static("./public"));
 app.use("/module", express.static(path.join(__dirname, "node_modules/")));
