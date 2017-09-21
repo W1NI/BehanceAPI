@@ -1,14 +1,35 @@
-var key = "XqSppMaVDo8FdJv4ixu7OuFqYkl4gWXg";
+var key = "PyMFCmfAybdTvwclB5XacPZxqbSOpYKV";
+// var url =  "http://behance.net/v2/users/"+behanceID+"?api_key="+key+"&callback=myCallbackFunction";
 
-$.ajax({
-	url: "http://behance.net/v2/users/visceravicarious?api_key=XqSppMaVDo8FdJv4ixu7OuFqYkl4gWXg&callback=myCallbackFunction",
-	contentType: "application/json",
-	dataType: "jsonp",
-	success: function(data){
-		console.log(data);
-	},
-	error: function(){
-		console.log("Error with ajax request");
+function getBehanceData(behanceID){
+	$.ajax({
+		url: "http://behance.net/v2/users/"+behanceID+"?api_key="+key+"&callback=myCallbackFunction",
+		contentType: "application/json",
+		dataType: "jsonp",
+		success: function(data){
+			console.log(data);
+			var profileImage = data.user.images[276];
+			var profileDisplayName = data.user.display_name;
+
+			$("#teamContent").append(
+					"<div class='teamProfileContainer'>"+
+						"<div class='profileImage'>"+
+							"<img src='"+profileImage+"' alt='profil image'>"+
+						"</div>"+
+						"<div class='teamMemberName'>"+profileDisplayName+"</div>"+
+					"</div>"
+				)
+		},
+		error: function(){
+			console.log("Error with ajax request");
+		}
+	});
+}
+
+$.get( "http://localhost:3000/behanceIDs", function(data) {
+	for (var i = 0; i < data.length; i++) {
+		var behanceID = data[i].behanceID;
+		getBehanceData(behanceID);
 	}
 });
 

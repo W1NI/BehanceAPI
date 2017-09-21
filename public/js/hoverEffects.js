@@ -15,3 +15,20 @@ $(".menuListItem").hover(function(){
 		$(this).find(".listHover").css("width","0%");
 	}
 );
+
+$(".profileImage").hover(
+	function(){
+		$(this).fadeOut();
+	},function(){
+		$(this).show();
+	}
+)
+
+$(document).on('mouseover', '.profileImage', function(){
+		$(".profileImage").addClass("spotlight");
+		$(this).removeClass("spotlight").next(".teamMemberName").css("color","#0eedb9");
+
+}).on('mouseout', '.profileImage', function(){
+	$(".profileImage").removeClass("spotlight");
+	$(this).next(".teamMemberName").css("color","white");
+});
