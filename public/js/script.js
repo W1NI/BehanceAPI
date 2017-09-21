@@ -1,4 +1,4 @@
-var key = "pmWW5bXjxxOMdTZThQSloFafop81JSrA";
+var key = "efkifBSBLRVmoHgF4YMUX2mvNKrYSTeP";
 
 function getBehanceData(behanceID){
 	$.ajax({
@@ -6,7 +6,6 @@ function getBehanceData(behanceID){
 		contentType: "application/json",
 		dataType: "jsonp",
 		success: function(data){
-			console.log(data);
 			var profileImage = data.user.images[276];
 			var profileDisplayName = data.user.display_name;
 
@@ -31,15 +30,43 @@ function getProjectImages(behanceID){
 		contentType: "application/json",
 		dataType: "jsonp",
 		success: function(data){
-            console.log(data);
             var projectName = data.project.name;
             var projectUrl = data.project.url;
 			var projectLikes = data.project.stats.appreciations;
 			var projectComments = data.project.stats.comments;
 			var projectViews = data.project.stats.views;
+			var ownerImage = data.project.owners[0].images[276];
+			var ownerName = data.project.owners["0"].display_name;
+			var ownerAppreciations = data.project.owners["0"].stats.appreciations;
+			var ownerViews = data.project.owners["0"].stats.views;
+			var ownerFollowers = data.project.owners["0"].stats.followers;
+			var ownerFollowing = data.project.owners["0"].stats.following;
 
             $("#projectTitle").empty().append(projectName);
             $("#projectImagesContainer").empty();
+			$("#projectProfileImage").append("<img src='"+ownerImage+"' alt=''>")
+
+			$("#sideBarInfoContainer").empty().append(
+				`<div class="sideBarInfo">
+					<div id="ownerName" class="sideBarHeader">${ownerName}</div>
+				</div>
+				<div class="sideBarInfo">
+					<div id="ownerLikes" class="sideBarHeader"><i class='fa fa-heart' aria-hidden='true'></i>Appreciations</div>
+					<div>${ownerAppreciations}</div>
+				</div>
+				<div class="sideBarInfo">
+					<div id="ownerViews" class="sideBarHeader"><i class='fa fa-eye' aria-hidden='true'></i>Views</div>
+					<div>${ownerViews}</div>
+				</div>
+				<div class="sideBarInfo">
+					<div id="ownerFollowers" class="sideBarHeader"><i class='fa fa-users' aria-hidden='true'></i>Followers</div>
+					<div>${ownerFollowers}</div>
+				</div>
+				<div class="sideBarInfo">
+					<div id="ownerFollowing" class="sideBarHeader"><i class='fa fa-user-plus' aria-hidden='true'></i>Following</div>
+					<div>${ownerFollowing}</div>
+				</div>`
+			);
 
 			$("#projectStats").empty().append(
 				"<div class='stat views'><i class='fa fa-eye' aria-hidden='true'></i>"+projectViews+"</div>"+

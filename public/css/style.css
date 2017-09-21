@@ -292,11 +292,36 @@ body {
 
 #sideBar {
   background: #0a0b27;
-  height: 1000px;
   width: 30%;
   overflow: auto;
-  padding-top: 50px;
-  box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.4); }
+  padding-top: 50px; }
+
+#sideBarInfoContainer {
+  color: white;
+  padding-bottom: 50px;
+  line-height: 45px;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1.2em;
+  letter-spacing: 1px; }
+  #sideBarInfoContainer .fa {
+    color: white; }
+
+.sideBarInfo {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between; }
+
+.sideBarHeader {
+  color: #0eedb9; }
+
+#ownerName {
+  font-size: 1.4em;
+  color: white;
+  margin-bottom: 10px; }
+
+#projectProfileImage {
+  margin-bottom: 30px; }
 
 #projectContainer {
   overflow: auto;
