@@ -1,6 +1,16 @@
-var key = "efkifBSBLRVmoHgF4YMUX2mvNKrYSTeP";
+var key = "lJj3NHJL8K9wQr4y9QtjVHDrABsCfAlC";
+var userId;
+var projectId;
 
-function getBehanceData(behanceID){
+// Get the usernames of the team to use for API calls.
+$.get( "http://localhost:3000/behanceIDs", function(data) {
+	for (var i = 0; i < data.length; i++) {
+		var behanceID = data[i].behanceID;
+		homepageProfileImage(behanceID);
+	}
+});
+
+function homepageProfileImage(behanceID){
 	$.ajax({
 		url: "http://behance.net/v2/users/"+behanceID+"?api_key="+key+"&callback=myCallbackFunction",
 		contentType: "application/json",
@@ -8,43 +18,40 @@ function getBehanceData(behanceID){
 		success: function(data){
 			var profileImage = data.user.images[276];
 			var profileDisplayName = data.user.display_name;
+			var profileId = data.user.id
 
 			$("#teamContent").append(
 					"<div class='teamProfileContainer'>"+
-						"<div class='profileImage'>"+
-							"<img src='"+profileImage+"' alt='profil image'>"+
+						"<div class='profileImage' data-type='"+profileId+"'>"+
+							"<img src='"+profileImage+"' alt='profile image'>"+
 						"</div>"+
 						"<div class='teamMemberName'>"+profileDisplayName+"</div>"+
 					"</div>"
 				);
 		},
 		error: function(){
-			console.log("Error with ajax request");
+			console.log("Error retrieving profile picture");
 		}
 	});
 };
 
-function getProjectImages(behanceID){
+// makes a call to the api and pulls profile info to display in the sidebar(profile picture, page views etc.)
+function loadSideBarInfo(profileId){
 	$.ajax({
-		url: "http://www.behance.net/v2/projects/56623139?client_id="+key,
+		url: "http://behance.net/v2/users/"+profileId+"?api_key="+key+"&callback=myCallbackFunction",
 		contentType: "application/json",
 		dataType: "jsonp",
 		success: function(data){
-            var projectName = data.project.name;
-            var projectUrl = data.project.url;
-			var projectLikes = data.project.stats.appreciations;
-			var projectComments = data.project.stats.comments;
-			var projectViews = data.project.stats.views;
-			var ownerImage = data.project.owners[0].images[276];
-			var ownerName = data.project.owners["0"].display_name;
-			var ownerAppreciations = data.project.owners["0"].stats.appreciations;
-			var ownerViews = data.project.owners["0"].stats.views;
-			var ownerFollowers = data.project.owners["0"].stats.followers;
-			var ownerFollowing = data.project.owners["0"].stats.following;
+			console.log(data)
 
-            $("#projectTitle").empty().append(projectName);
-            $("#projectImagesContainer").empty();
-			$("#projectProfileImage").append("<img src='"+ownerImage+"' alt=''>")
+			var ownerImage = data.user.images[276];
+			var ownerName = data.user.display_name;
+			var ownerAppreciations = data.user.stats.appreciations;
+			var ownerViews = data.user.stats.views;
+			var ownerFollowers = data.user.stats.followers;
+			var ownerFollowing = data.user.stats.following;
+
+			$("#userProfileImage").empty().append("<img src='"+ownerImage+"' alt='Profile picture'>");
 
 			$("#sideBarInfoContainer").empty().append(
 				`<div class="sideBarInfo">
@@ -67,19 +74,67 @@ function getProjectImages(behanceID){
 					<div>${ownerFollowing}</div>
 				</div>`
 			);
+		},
+		error: function(){
+			console.log("Sidebar data not working");
+		}
+	});
+}
 
+// Loads all of the targets projects and displays them in a gallery format using the project "covers"
+function loadProjectCovers(userId){
+	$.ajax({
+		url: "http://behance.net/v2/users/"+userId+"/projects?client_id="+key+"&callback=myCallbackFunction",
+		contentType: "application/json",
+		dataType: "jsonp",
+		success: function(data){
+			$("#projectGalleryOverlay").empty()
+			for (var i = 0; i < data.projects.length; i++) {
+				var projectId =	data.projects[i].id;
+				var images = data.projects[i].covers[404];
+				console.log(projectId);
+
+				$("#projectGalleryOverlay").append(
+					"<div class='coverImage projectGalleryImage' data-type='"+projectId+"'>"+
+						"<img src='"+images+"' alt='project cover'>"+
+					"</div>"
+				);
+			}
+		},
+		error: function(){
+			console.log("Error with ajax request");
+		}
+	});
+}
+
+// Pulls a project from the api key and displays them in a pop up box
+function loadProjectGallery(projectId){
+	$.ajax({
+		url: "http://www.behance.net/v2/projects/"+projectId+"?client_id="+key,
+		contentType: "application/json",
+		dataType: "jsonp",
+		success: function(data){
+			console.log("Project Load working");
+			console.log(data);
+
+			var projectName = data.project.name;
+            var projectUrl = data.project.url;
+			var projectLikes = data.project.stats.appreciations;
+			var projectComments = data.project.stats.comments;
+			var projectViews = data.project.stats.views;
+
+			$("#projectTitle").empty().append(projectName);
+            $("#projectImagesContainer").empty();
 			$("#projectStats").empty().append(
 				"<div class='stat views'><i class='fa fa-eye' aria-hidden='true'></i>"+projectViews+"</div>"+
 				"<div class='stat appreciations'><i class='fa fa-heart' aria-hidden='true'></i>"+projectLikes+"</div>"+
 				"<div class='stat comments'><i class='fa fa-comment' aria-hidden='true'></i>"+projectComments+"</div>"
 			);
-
 			$("#behanceLink").empty().append(
 				"<a href='"+projectUrl+"' target='_blank'>View on Behance</a><div class='linkHover'></div>"
 			);
-
             for (var i = 0; i < data.project.modules.length; i++) {
-                var imageUrl = data.project.modules[i].sizes[1400];
+                var imageUrl = data.project.modules[i].sizes.disp;
                 $("#projectImagesContainer").append(
                     "<div class='projectImage'>"+
                         "<img src='"+imageUrl+"' alt=''>"+
@@ -89,18 +144,28 @@ function getProjectImages(behanceID){
             }
 		},
 		error: function(){
-			console.log("Error with ajax request");
+			console.log("Error loading project images");
 		}
 	});
 }
 
 
-$.get( "http://localhost:3000/behanceIDs", function(data) {
-	for (var i = 0; i < data.length; i++) {
-		var behanceID = data[i].behanceID;
-		getBehanceData(behanceID);
-		getProjectImages(behanceID);
-	}
+$(document).on('click', '.profileImage', function(){
+	var userId = $(this).attr('data-type');
+	loadSideBarInfo(userId);
+	openProjectOverlay();
+	loadProjectCovers(userId);
+});
+
+$(document).on('click', '.projectGalleryImage', function(){
+	var projectIdAttr = $(this).attr('data-type');
+	console.log(projectIdAttr);
+	loadProjectGallery(projectIdAttr);
+	$("#popUpContainer").fadeIn(400);
+});
+
+$("#closePopUp").click(function(){
+	$("#popUpContainer").fadeOut(400);
 });
 
 $(document).ready(function(){
@@ -129,11 +194,7 @@ scrollLoad("#contactContent", 1200, 1000);
 $("#logo").click(function(){
 	scrollToTop();
 	closeOverlays();
-})
-
-$("#overlayTest").click(function(){
-	openProjectOverlay();
-})
+});
 
 // Function which loads elements on scroll.
 function scrollLoad(element, value, timer){

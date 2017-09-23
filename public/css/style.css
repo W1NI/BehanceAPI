@@ -30,7 +30,8 @@ nav {
   position: fixed;
   z-index: 20;
   background-color: #0a0b27;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7); }
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+  transition-duration: 500ms; }
 
 #navContainer {
   width: 90%;
@@ -288,7 +289,8 @@ body {
   overflow: hidden;
   padding-top: 100px;
   position: relative;
-  display: none; }
+  display: none;
+  transition-duration: 500ms; }
 
 #sideBar {
   background: #0a0b27;
@@ -302,7 +304,7 @@ body {
   line-height: 45px;
   width: 70%;
   margin: 0 auto;
-  font-size: 1.2em;
+  font-size: 1em;
   letter-spacing: 1px; }
   #sideBarInfoContainer .fa {
     color: white; }
@@ -320,20 +322,57 @@ body {
   color: white;
   margin-bottom: 10px; }
 
+#projectGalleryOverlay {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding-bottom: 500px;
+  overflow: auto; }
+
+.coverImage {
+  width: 33%;
+  padding: 10px;
+  height: 300px;
+  overflow: hidden;
+  transition-duration: 400ms; }
+  .coverImage:hover {
+    cursor: pointer; }
+
 #projectProfileImage {
   margin-bottom: 30px; }
 
-#projectContainer {
+#popUpContainer {
   overflow: auto;
-  width: 70%;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  position: absolute;
+  padding: 80px;
+  text-align: center;
+  background-color: rgba(9, 10, 27, 0.9);
+  display: none; }
+
+#closePopUp {
+  display: inline-block;
+  margin-bottom: 40px; }
+
+#projectContainer {
   background-color: #0a0b27;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
   padding-top: 50px;
-  padding-bottom: 150px;
-  text-align: center; }
+  padding-bottom: 50px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7); }
 
 #projectImagesContainer {
   width: 90%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 50px; }
 
 .projectImage {
   width: 100%;
@@ -379,17 +418,5 @@ body {
   width: 0%;
   transition-duration: 200ms;
   background-color: white; }
-
-.block1 {
-  width: 80%;
-  margin: 0 auto;
-  height: 600px;
-  background-color: #c8d3f7; }
-
-.block2 {
-  width: 80%;
-  margin: 0 auto;
-  height: 600px;
-  background-color: #1544dd; }
 
 /*# sourceMappingURL=style.css.map */
