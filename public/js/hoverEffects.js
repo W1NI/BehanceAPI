@@ -32,3 +32,14 @@ $(document).on('mouseover', '#behanceLink', function(){
 }).on('mouseout', '#behanceLink', function(){
 	$(this).find(".linkHover").css("width","0%");
 });
+
+
+// profile image hover effect
+$(document).on('mouseover', '.coverImage', function(){
+		$(".coverImage").addClass("spotlight");
+		$(this).removeClass("spotlight").next(".teamMemberName").css("color","#0eedb9");
+
+}).on('mouseout', '.coverImage', function(){
+	$(".coverImage").removeClass("spotlight");
+	$(this).next(".teamMemberName").css("color","white");
+});
