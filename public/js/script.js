@@ -1,7 +1,7 @@
 var key = "lJj3NHJL8K9wQr4y9QtjVHDrABsCfAlC";
 var userId;
 var projectId;
-
+var popUpOpen = false;
 // Get the usernames of the team to use for API calls.
 $.get( "http://localhost:3000/behanceIDs", function(data) {
 	for (var i = 0; i < data.length; i++) {
@@ -134,12 +134,25 @@ function loadProjectGallery(projectId){
 				"<a href='"+projectUrl+"' target='_blank'>View on Behance</a><div class='linkHover'></div>"
 			);
             for (var i = 0; i < data.project.modules.length; i++) {
-                var imageUrl = data.project.modules[i].sizes.disp;
-                $("#projectImagesContainer").append(
-                    "<div class='projectImage'>"+
-                        "<img src='"+imageUrl+"' alt=''>"+
-                    "</div>"
-                );
+				var projectModule = data.project.modules[i];
+                var imageUrl = data.project.modules[i].src;
+				var embedVideo = data.project.modules[i].embed;
+
+				if (data.project.modules[i].type == "embed") {
+					console.log(embedVideo);
+					$("#projectImagesContainer").append(
+	                    "<div class='projectVideo'>"+
+	                        embedVideo+
+	                    "</div>"
+	                );
+				} else if(data.project.modules[i].type == "image"){
+					console.log(imageUrl);
+					$("#projectImagesContainer").append(
+	                    "<div class='projectImage'>"+
+	                        "<img src='"+imageUrl+"' alt=''>"+
+	                    "</div>"
+	                );
+				}
 
             }
 		},
@@ -162,11 +175,22 @@ $(document).on('click', '.projectGalleryImage', function(){
 	console.log(projectIdAttr);
 	loadProjectGallery(projectIdAttr);
 	$("#popUpContainer").fadeIn(400);
+	console.log(popUpOpen);
 });
 
-$("#closePopUp").click(function(){
+$("#closePopUp, #popUpContainer").click(function(){
 	$("#popUpContainer").fadeOut(400);
+	$("#projectImagesContainer").empty();
 });
+
+$('body').keydown(function(event){
+  if ( event.which == 27 ) {
+		event.preventDefault();
+		$("#popUpContainer").fadeOut(400);
+  }
+})
+
+
 
 $(document).ready(function(){
     $(this).scrollTop(0);
@@ -183,7 +207,7 @@ $("#closeMenu").click(function(){
 	$("body").css('overflow','auto');
 });
 
-$(".waveContainer").fadeIn(1000);
+$(".waveContainer").fadeIn(0);
 
 $("#landingPageContainer").fadeIn(600);
 
