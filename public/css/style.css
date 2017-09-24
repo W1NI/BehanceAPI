@@ -30,7 +30,8 @@ nav {
   position: fixed;
   z-index: 20;
   background-color: #0a0b27;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7); }
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+  transition-duration: 500ms; }
 
 #navContainer {
   width: 90%;
@@ -163,11 +164,14 @@ body {
   justify-content: space-around; }
 
 .button {
+  position: relative;
+  display: inline-block;
+  width: auto;
   letter-spacing: 6px;
   border: 2px solid #0eedb9;
   padding: 6px 23px 6px 23px;
-  border-radius: 15px;
-  position: relative;
+  border-radius: 6px;
+  font-size: 1em;
   overflow: hidden;
   cursor: pointer; }
   .button p {
@@ -178,6 +182,7 @@ body {
     color: #0a0b27; }
 
 .buttonHoverEffect {
+  transition-duration: 300ms;
   position: absolute;
   top: 0;
   left: 0;
@@ -185,7 +190,7 @@ body {
   height: 100%;
   width: 0%;
   z-index: 0;
-  transition-duration: 300ms; }
+  overflow: hidden; }
 
 .blockContainer {
   width: 100%;
@@ -277,7 +282,8 @@ body {
 .profileButton {
   text-align: center;
   margin: 0 auto;
-  width: 80%; }
+  width: 80%;
+  display: block; }
 
 #contactContainer {
   background-color: #0eedb9; }
@@ -288,7 +294,8 @@ body {
   overflow: hidden;
   padding-top: 100px;
   position: relative;
-  display: none; }
+  display: none;
+  transition-duration: 500ms; }
 
 #sideBar {
   background: #0a0b27;
@@ -302,7 +309,7 @@ body {
   line-height: 45px;
   width: 70%;
   margin: 0 auto;
-  font-size: 1.2em;
+  font-size: 1em;
   letter-spacing: 1px; }
   #sideBarInfoContainer .fa {
     color: white; }
@@ -320,20 +327,75 @@ body {
   color: white;
   margin-bottom: 10px; }
 
+#projectGalleryOverlay {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding-bottom: 500px;
+  overflow: auto; }
+
+.coverImage {
+  width: 33%;
+  padding: 10px;
+  height: 300px;
+  overflow: hidden;
+  transition-duration: 400ms; }
+  .coverImage:hover {
+    cursor: pointer; }
+
 #projectProfileImage {
   margin-bottom: 30px; }
 
-#projectContainer {
+#popUpContainer {
   overflow: auto;
-  width: 70%;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  position: absolute;
+  padding: 80px;
+  text-align: center;
+  background-color: rgba(9, 10, 27, 0.9);
+  display: none; }
+
+#closePopUp {
+  display: inline-block;
+  margin-bottom: 40px; }
+
+#projectContainer {
   background-color: #0a0b27;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
   padding-top: 50px;
-  padding-bottom: 150px;
-  text-align: center; }
+  padding-bottom: 50px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+  position: relative; }
+
+#closePopUpIcon {
+  font-size: 1.3em;
+  color: #0eedb9;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 20px;
+  padding-top: 20px;
+  cursor: pointer; }
+  #closePopUpIcon:hover {
+    opacity: 0.6; }
 
 #projectImagesContainer {
   width: 90%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 50px; }
+
+.projectVideo {
+  position: relative;
+  display: flex;
+  max-width: 100%; }
 
 .projectImage {
   width: 100%;
@@ -379,17 +441,5 @@ body {
   width: 0%;
   transition-duration: 200ms;
   background-color: white; }
-
-.block1 {
-  width: 80%;
-  margin: 0 auto;
-  height: 600px;
-  background-color: #c8d3f7; }
-
-.block2 {
-  width: 80%;
-  margin: 0 auto;
-  height: 600px;
-  background-color: #1544dd; }
 
 /*# sourceMappingURL=style.css.map */
