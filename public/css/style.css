@@ -64,7 +64,8 @@ nav {
 
 #hamburgerMenu {
   cursor: pointer;
-  width: 25%; }
+  width: 37px;
+  height: 30px; }
   #hamburgerMenu:hover {
     opacity: 0.5; }
 
@@ -80,7 +81,7 @@ nav {
   display: none; }
   #overlayMenu li {
     margin-bottom: 40px;
-    font-size: 3em;
+    font-size: 1.5em;
     font-weight: 600;
     position: relative;
     width: auto;
@@ -88,36 +89,34 @@ nav {
     clear: both;
     cursor: pointer; }
   #overlayMenu .fa {
-    font-size: 1.3em;
     color: white;
     padding-left: 20px;
-    padding-top: 90px;
     cursor: pointer; }
     #overlayMenu .fa:hover {
       color: #0eedb9; }
 
 #menuList {
   width: 100%;
-  display: inline-block; }
+  display: inline-block;
+  letter-spacing: 4px; }
+
+.menuListItem {
+  width: auto;
+  height: 40px;
+  color: white; }
+  .menuListItem:hover {
+    color: #0eedb9; }
 
 .listHover {
-  transition-duration: 300ms;
-  width: 0%;
-  height: 5px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-color: white; }
+  transition-duration: 300ms; }
 
 #closeMenu {
   width: 100%;
   height: 40px;
   margin-bottom: 40px;
   cursor: pointer; }
-  #closeMenu img {
-    height: 100%; }
-    #closeMenu img:hover {
-      opacity: 0.6; }
+  #closeMenu img:hover {
+    opacity: 0.6; }
 
 .clicked {
   display: block !important; }
@@ -661,5 +660,3 @@ footer {
   padding: 40px;
   font-size: 1.3em;
   color: white; }
-
-/*# sourceMappingURL=style.css.map */
