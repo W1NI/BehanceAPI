@@ -1,7 +1,7 @@
-var key = "lJj3NHJL8K9wQr4y9QtjVHDrABsCfAlC";
+var key = "3KmqsyCwcUQsMj4YVwuNodQ32jzvUyWx";
 var userId;
 var projectId;
-var popUpOpen = false;
+
 // Get the usernames of the team to use for API calls.
 $.get( "http://localhost:3000/behanceIDs", function(data) {
 	for (var i = 0; i < data.length; i++) {
@@ -88,7 +88,7 @@ function loadProjectCovers(userId){
 		contentType: "application/json",
 		dataType: "jsonp",
 		success: function(data){
-			$("#projectGalleryOverlay").empty()
+			$("#projectGalleryOverlay").empty();
 			for (var i = 0; i < data.projects.length; i++) {
 				var projectId =	data.projects[i].id;
 				var images = data.projects[i].covers[404];
@@ -100,6 +100,8 @@ function loadProjectCovers(userId){
 					"</div>"
 				);
 			}
+			// $("#projectGalleryOverlay").fadeIn(200);
+			pageLoaded();
 		},
 		error: function(){
 			console.log("Error with ajax request");
@@ -135,26 +137,31 @@ function loadProjectGallery(projectId){
 			);
             for (var i = 0; i < data.project.modules.length; i++) {
 				var projectModule = data.project.modules[i];
-                var imageUrl = data.project.modules[i].src;
-				var embedVideo = data.project.modules[i].embed;
 
 				if (data.project.modules[i].type == "embed") {
-					console.log(embedVideo);
+					var embedVideo = data.project.modules[i].embed;
 					$("#projectImagesContainer").append(
 	                    "<div class='projectVideo'>"+
 	                        embedVideo+
 	                    "</div>"
 	                );
 				} else if(data.project.modules[i].type == "image"){
-					console.log(imageUrl);
+					var imageUrl = data.project.modules[i].sizes.original;
 					$("#projectImagesContainer").append(
 	                    "<div class='projectImage'>"+
-	                        "<img src='"+imageUrl+"' alt=''>"+
+	                        "<img src='"+imageUrl+"' alt='project image'>"+
+	                    "</div>"
+	                );
+				} else if(data.project.modules[i].type == "text"){
+					var projectText = data.project.modules[i].text_plain;
+					$("#projectImagesContainer").append(
+	                    "<div class='projectText'>"+
+	                        projectText+
 	                    "</div>"
 	                );
 				}
-
             }
+			pageLoaded();
 		},
 		error: function(){
 			console.log("Error loading project images");
@@ -162,42 +169,67 @@ function loadProjectGallery(projectId){
 	});
 }
 
+function pageLoaded(){
+	$("#loadPageOverlay").fadeOut(800);
+}
 
 $(document).on('click', '.profileImage', function(){
 	var userId = $(this).attr('data-type');
-	loadSideBarInfo(userId);
-	openProjectOverlay();
-	loadProjectCovers(userId);
+	console.log("IM CLICKED");
+	$("#loadPageOverlay").fadeIn(400, function() {
+		$(this).css("display","flex");
+		loadSideBarInfo(userId);
+		openProjectOverlay();
+		loadProjectCovers(userId);
+	});
 });
 
 $(document).on('click', '.projectGalleryImage', function(){
 	var projectIdAttr = $(this).attr('data-type');
 	console.log(projectIdAttr);
-	loadProjectGallery(projectIdAttr);
-	$("#popUpContainer").fadeIn(400);
-	console.log(popUpOpen);
+	$("#loadPageOverlay").fadeIn(400, function() {
+		$(this).css("display","flex");
+		$("#popUpContainer").fadeIn(400);
+		loadProjectGallery(projectIdAttr);
+	});
 });
 
-$("#closePopUp, #popUpContainer").click(function(){
+$("#popUpToTop").click(function() {
+	console.log("clicked bru");
+    $('html, body, #projectContainer').animate({
+        scrollTop: $("#projectTitle").offset().top
+    }, 1800);
+});
+
+$("#closePopUp, #closePopUpIcon").click(function(){
 	$("#popUpContainer").fadeOut(400);
 	$("#projectImagesContainer").empty();
+	pageLoaded();
+});
+
+$("#popUpHome").click(function(){
+	$("#loadPageOverlay").fadeIn(200, function() {
+		$(this).css("display","flex");
+		$("#popUpContainer").fadeOut(400)
+		$("#projectImagesContainer").empty(500);
+		closeOverlays();
+		pageLoaded();
+	});
 });
 
 $('body').keydown(function(event){
   if ( event.which == 27 ) {
 		event.preventDefault();
 		$("#popUpContainer").fadeOut(400);
+		pageLoaded();
   }
 })
-
-
 
 $(document).ready(function(){
     $(this).scrollTop(0);
 });
 
 $("#hamburgerMenu").click(function(){
-	$("#logoContainer").css('z-index','60');
 	$("#overlayMenu").fadeIn(300);
 	$("body").css('overflow','hidden');
 });
@@ -207,15 +239,12 @@ $("#closeMenu").click(function(){
 	$("body").css('overflow','auto');
 });
 
-$(".waveContainer").fadeIn(0);
-
 $("#landingPageContainer").fadeIn(600);
 
-scrollLoad("#serviceContent", 200, 1000);
 scrollLoad("#teamContent", 800, 1000);
 scrollLoad("#contactContent", 1200, 1000);
 
-$("#logo").click(function(){
+$("#logo, #profileBackButton, .backToTop, #popUpHome").click(function(){
 	scrollToTop();
 	closeOverlays();
 });
@@ -229,6 +258,16 @@ function scrollLoad(element, value, timer){
 	});
 }
 
+scrollLoadImages("#homepageImageContainer", 500);
+
+function scrollLoadImages(element, value){
+	$(window).bind('scroll', function () {
+	    if ($(window).scrollTop() > value) {
+	        $(element).css("opacity","1");
+	    }
+	});
+}
+
 /*Scrolls to top*/
 function scrollToTop(){
 	$('html, body').animate({scrollTop: 0}, 600);
@@ -236,8 +275,9 @@ function scrollToTop(){
 
 // Closes all overlays currently open and sets mainContainer back to normal
 function closeOverlays(){
-	$("#overlayProfile").fadeOut(400);
+	$("#overlayProfile").fadeOut(500);
 	$("#masterContainer").css("position","relative");
+	$("footer").css("position","relative");
 };
 
 // Opens overlay for profile/projects
@@ -246,7 +286,5 @@ function openProjectOverlay(){
 	$("#overlayProfile").hide();
 	$("#overlayProfile").fadeIn(700);
 	$("#masterContainer").css("position","fixed");
-
+	$("footer").css("position","fixed");
 };
-
-//	Contact Form Validation?
