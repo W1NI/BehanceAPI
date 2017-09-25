@@ -1,7 +1,7 @@
-var key = "lJj3NHJL8K9wQr4y9QtjVHDrABsCfAlC";
+var key = "vbVG8hCyZmgJGjEgFVoX7tJzhSIc7NVc";
 var userId;
 var projectId;
-var popUpOpen = false;
+
 // Get the usernames of the team to use for API calls.
 $.get( "http://localhost:3000/behanceIDs", function(data) {
 	for (var i = 0; i < data.length; i++) {
@@ -88,7 +88,7 @@ function loadProjectCovers(userId){
 		contentType: "application/json",
 		dataType: "jsonp",
 		success: function(data){
-			$("#projectGalleryOverlay").empty()
+			$("#projectGalleryOverlay").empty();
 			for (var i = 0; i < data.projects.length; i++) {
 				var projectId =	data.projects[i].id;
 				var images = data.projects[i].covers[404];
@@ -100,6 +100,8 @@ function loadProjectCovers(userId){
 					"</div>"
 				);
 			}
+			// $("#projectGalleryOverlay").fadeIn(200);
+			pageLoaded();
 		},
 		error: function(){
 			console.log("Error with ajax request");
@@ -135,7 +137,7 @@ function loadProjectGallery(projectId){
 			);
             for (var i = 0; i < data.project.modules.length; i++) {
 				var projectModule = data.project.modules[i];
-                var imageUrl = data.project.modules[i].src;
+                var imageUrl = data.project.modules[i].sizes[1400];
 				var embedVideo = data.project.modules[i].embed;
 
 				if (data.project.modules[i].type == "embed") {
@@ -149,12 +151,12 @@ function loadProjectGallery(projectId){
 					console.log(imageUrl);
 					$("#projectImagesContainer").append(
 	                    "<div class='projectImage'>"+
-	                        "<img src='"+imageUrl+"' alt=''>"+
+	                        "<img src='"+imageUrl+"' alt='project image'>"+
 	                    "</div>"
 	                );
 				}
-
             }
+			pageLoaded();
 		},
 		error: function(){
 			console.log("Error loading project images");
@@ -162,31 +164,43 @@ function loadProjectGallery(projectId){
 	});
 }
 
+function pageLoaded(){
+	$("#loadPageOverlay").fadeOut(800);
+}
 
 $(document).on('click', '.profileImage', function(){
 	var userId = $(this).attr('data-type');
-	loadSideBarInfo(userId);
-	openProjectOverlay();
-	loadProjectCovers(userId);
+	console.log("IM CLICKED");
+	$("#loadPageOverlay").fadeIn(400, function() {
+		$(this).css("display","flex");
+		loadSideBarInfo(userId);
+		openProjectOverlay();
+		loadProjectCovers(userId);
+	});
 });
 
 $(document).on('click', '.projectGalleryImage', function(){
 	var projectIdAttr = $(this).attr('data-type');
 	console.log(projectIdAttr);
-	loadProjectGallery(projectIdAttr);
-	$("#popUpContainer").fadeIn(400);
-	console.log(popUpOpen);
+	$("#loadPageOverlay").fadeIn(400, function() {
+		$(this).css("display","flex");
+		$("#popUpContainer").fadeIn(400);
+		loadProjectGallery(projectIdAttr);
+	});
 });
 
 $("#closePopUp, #popUpContainer").click(function(){
 	$("#popUpContainer").fadeOut(400);
 	$("#projectImagesContainer").empty();
+	pageLoaded();
 });
 
 $('body').keydown(function(event){
   if ( event.which == 27 ) {
 		event.preventDefault();
 		$("#popUpContainer").fadeOut(400);
+		pageLoaded();
+
   }
 })
 
