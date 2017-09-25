@@ -28,7 +28,7 @@ ul {
 nav {
   width: 100%;
   position: fixed;
-  z-index: 20;
+  z-index: 50;
   background-color: #0a0b27;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
   transition-duration: 500ms; }
@@ -63,7 +63,7 @@ nav {
   position: fixed;
   background-color: #0eedb9;
   color: #0a0b27;
-  z-index: 40;
+  z-index: 60;
   text-align: right;
   padding: 80px;
   display: none; }
@@ -178,7 +178,7 @@ body {
     position: relative;
     z-index: 1; }
   .button:hover {
-    font-weight: 600;
+    font-weight: 500;
     color: #0a0b27; }
 
 .buttonHoverEffect {
@@ -312,7 +312,8 @@ body {
   font-size: 1em;
   letter-spacing: 1px; }
   #sideBarInfoContainer .fa {
-    color: white; }
+    color: white;
+    padding-right: 7px; }
 
 .sideBarInfo {
   display: flex;
@@ -354,14 +355,10 @@ body {
   height: 100vh;
   z-index: 100;
   position: absolute;
-  padding: 80px;
+  padding: 60px;
   text-align: center;
   background-color: rgba(9, 10, 27, 0.9);
   display: none; }
-
-#closePopUp {
-  display: inline-block;
-  margin-bottom: 40px; }
 
 #projectContainer {
   background-color: #0a0b27;
@@ -375,22 +372,41 @@ body {
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
   position: relative; }
 
-#closePopUpIcon {
-  font-size: 1.3em;
-  color: #0eedb9;
+#projectImagesContainer {
+  width: 100%;
+  padding-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap; }
+  #projectImagesContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; }
+
+#closePopUp {
+  display: inline-block;
+  margin-bottom: 40px; }
+
+.closeButtonCircle {
+  background-color: #0eedb9;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
   position: absolute;
   right: 0;
   top: 0;
-  padding-right: 20px;
-  padding-top: 20px;
-  cursor: pointer; }
-  #closePopUpIcon:hover {
-    opacity: 0.6; }
+  cursor: pointer;
+  transition-duration: 100ms; }
+  .closeButtonCircle:hover {
+    opacity: 0.7; }
 
-#projectImagesContainer {
-  width: 90%;
-  margin: 0 auto;
-  padding-bottom: 50px; }
+#closePopUpIcon {
+  font-size: 1.3em;
+  color: #0a0b27;
+  margin: 0 auto; }
 
 .projectVideo {
   position: relative;
@@ -399,8 +415,7 @@ body {
 
 .projectImage {
   width: 100%;
-  height: auto;
-  padding: 0; }
+  height: auto; }
   .projectImage img {
     width: 100%; }
 
@@ -413,6 +428,8 @@ body {
 
 #projectStats {
   margin-bottom: 20px; }
+  #projectStats .fa {
+    margin-right: 7px; }
 
 .stat {
   font-size: 1em;
@@ -420,8 +437,7 @@ body {
   padding: 0px 11px 0px 11px; }
 
 .fa {
-  color: #0eedb9;
-  padding-right: 10px; }
+  color: #0eedb9; }
 
 #behanceLink {
   transition-duration: 200ms;
@@ -441,5 +457,29 @@ body {
   width: 0%;
   transition-duration: 200ms;
   background-color: white; }
+
+#loadPageOverlay {
+  width: 100%;
+  height: 100vh;
+  background-color: #0a0b27;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 49;
+  display: none;
+  align-items: center; }
+
+svg path,
+svg rect {
+  fill: #0eedb9; }
+
+.loader {
+  height: auto;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top; }
 
 /*# sourceMappingURL=style.css.map */
