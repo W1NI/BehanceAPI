@@ -210,27 +210,28 @@ $(document).on('click', '.projectGalleryImage', function(){
 	});
 });
 
-scrollToElement("#popUpToTop", "#projectTitle", 1400);
-scrollToElement(".serviceButton", "#serviceContainer", 1400);
-scrollToElement(".teamButton", "#teamContainer", 1400);
-scrollToElement(".contactButton", "#contactContainer", 1400);
-scrollToElement("#downArrow", "#serviceContainer", 1000);
+scroll("#olContact", "#contactContainer", 1300);
+scroll("#olServices", "#serviceContainer", 1300);
+scroll("#olTeam", "#teamContainer", 1300);
+scroll("#olHome", "#landingPageContainer", 1300);
+scroll("#popUpToTop", "#projectTitle", 1300);
+//overlay menu scroll clicks//
+}
+    });
+        }, speed);
+            scrollTop: $(target).offset().top
+        console.log("clicked bru");
+        $('html, body, #projectContainer').animate({
+    $(element).click(function() {
+function scroll(element, target, speed){
 
-// Scrolls to elements on 'click'.
-function scrollToElement(trigger, target, time){
-	$(trigger).click(function() {
-	    $("html, body, #projectContainer").animate({
-	        scrollTop: $(target).offset().top
-	    }, time);
-	});
-};
+//main BTN scroll click//
+scroll("#serviceBTN", "#serviceContainer", 1300);
+scroll("#teamBTN", "#teamContainer", 1300);
+scroll("#contactBTN", "#contactContainer", 1300);
 
-$("#closeMenu, .menuListItem").click(function(){
-	closeMenu();
-	closeOverlays();
-});
-
-$("#closePopUp, #closePopUpIcon, .closeButtonCircle").click(function(){
+scroll("#downArrow", "#serviceContainer", 1200);
+$("#closePopUp, #closePopUpIcon").click(function(){
 	$("#popUpContainer").fadeOut(400);
 	$("#projectImagesContainer").empty();
 	pageLoaded();
@@ -264,9 +265,14 @@ $("#hamburgerMenu").click(function(){
 });
 
 function closeMenu(){
-	$("#overlayMenu").fadeOut(300);
 	$("body").css('overflow','auto');
+	$("#overlayMenu").fadeOut(300);
 }
+
+
+$("#closeMenu, .menuListItem").click(function(){
+    closeMenu();
+})
 
 $("#landingPageContainer").fadeIn(600);
 
