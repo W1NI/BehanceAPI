@@ -1,4 +1,4 @@
-var key = "3KmqsyCwcUQsMj4YVwuNodQ32jzvUyWx";
+var key = "YuJiaYOEfp0L7x4p4MeMveWFG9iUoXZI";
 var userId;
 var projectId;
 
@@ -42,7 +42,7 @@ function loadSideBarInfo(profileId){
 		contentType: "application/json",
 		dataType: "jsonp",
 		success: function(data){
-			console.log(data)
+			console.log(data);
 
 			var ownerImage = data.user.images[276];
 			var ownerName = data.user.display_name;
@@ -50,29 +50,54 @@ function loadSideBarInfo(profileId){
 			var ownerViews = data.user.stats.views;
 			var ownerFollowers = data.user.stats.followers;
 			var ownerFollowing = data.user.stats.following;
+			var ownerComments = data.user.stats.comments;
+
+			$("#statNameTitle").empty().append(ownerName);
+
+			if(data.user.features.length > 0){
+				$("#featuresContainer").empty();
+				$("#featuresContainer").append("<div class='featuresTitle'>FEATURES</div>");
+
+				for (var i = 0; i < data.user.features.length; i++) {
+					var featuredRibbon = data.user.features[i].site.ribbon.image;
+					var featuredRibbonLink = data.user.features[i].site.url;
+					$("#featuresContainer").append(
+						"<div class='featuredRibbon'>"+
+						"<a href='"+featuredRibbonLink+"' target='_blank'><img src='"+featuredRibbon+"' alt='featured ribbon'></a>"+
+						"</div>"
+					)
+				}
+			}
+
+			$("#largeStatsViews").append(ownerViews);
+			$("#largeStatsAppreciations").append(ownerAppreciations);
+			$("#largeStatsFollowers").append(ownerFollowers);
+			$("#largeStatsFollowing").append(ownerFollowing);
+			$("#largeStatsComments").append(ownerViews);
+
 
 			$("#userProfileImage").empty().append("<img src='"+ownerImage+"' alt='Profile picture'>");
 
 			$("#sideBarInfoContainer").empty().append(
-				`<div class="sideBarInfo">
-					<div id="ownerName" class="sideBarHeader">${ownerName}</div>
-				</div>
-				<div class="sideBarInfo">
-					<div id="ownerLikes" class="sideBarHeader"><i class='fa fa-heart' aria-hidden='true'></i>Appreciations</div>
-					<div>${ownerAppreciations}</div>
-				</div>
-				<div class="sideBarInfo">
-					<div id="ownerViews" class="sideBarHeader"><i class='fa fa-eye' aria-hidden='true'></i>Views</div>
-					<div>${ownerViews}</div>
-				</div>
-				<div class="sideBarInfo">
-					<div id="ownerFollowers" class="sideBarHeader"><i class='fa fa-users' aria-hidden='true'></i>Followers</div>
-					<div>${ownerFollowers}</div>
-				</div>
-				<div class="sideBarInfo">
-					<div id="ownerFollowing" class="sideBarHeader"><i class='fa fa-user-plus' aria-hidden='true'></i>Following</div>
-					<div>${ownerFollowing}</div>
-				</div>`
+				"<div class='sideBarInfo'>"+
+					"<div id='ownerName' class='sideBarHeader'>"+ownerName+"</div>"+
+				"</div>"+
+				"<div class='sideBarInfo'>"+
+					"<div id='ownerLikes' class='sideBarHeader'><i class='fa fa-heart' aria-hidden='true'></i>Appreciations</div>"+
+					"<div>"+ownerAppreciations+"</div>"+
+				"</div>"+
+				"<div class='sideBarInfo'>"+
+					"<div id='ownerViews' class='sideBarHeader'><i class='fa fa-eye' aria-hidden='true'></i>Views</div>"+
+					"<div>"+ownerViews+"</div>"+
+				"</div>"+
+				"<div class='sideBarInfo'>"+
+					"<div id='ownerFollowers' class='sideBarHeader'><i class='fa fa-users' aria-hidden='true'></i>Followers</div>"+
+					"<div>"+ownerFollowers+"</div>"+
+				"</div>"+
+				"<div class='sideBarInfo'>"+
+					"<div id='"+ownerFollowing+"' class='sideBarHeader'><i class='fa fa-user-plus' aria-hidden='true'></i>Following</div>"+
+					"<div>"+ownerFollowing+"</div>"+
+				"</div>"
 			);
 		},
 		error: function(){
@@ -117,7 +142,6 @@ function loadProjectGallery(projectId){
 		dataType: "jsonp",
 		success: function(data){
 			console.log("Project Load working");
-			console.log(data);
 
 			var projectName = data.project.name;
             var projectUrl = data.project.url;
@@ -152,13 +176,6 @@ function loadProjectGallery(projectId){
 	                        "<img src='"+imageUrl+"' alt='project image'>"+
 	                    "</div>"
 	                );
-				} else if(data.project.modules[i].type == "text"){
-					var projectText = data.project.modules[i].text_plain;
-					$("#projectImagesContainer").append(
-	                    "<div class='projectText'>"+
-	                        projectText+
-	                    "</div>"
-	                );
 				}
             }
 			pageLoaded();
@@ -175,7 +192,6 @@ function pageLoaded(){
 
 $(document).on('click', '.profileImage', function(){
 	var userId = $(this).attr('data-type');
-	console.log("IM CLICKED");
 	$("#loadPageOverlay").fadeIn(400, function() {
 		$(this).css("display","flex");
 		loadSideBarInfo(userId);
@@ -194,14 +210,27 @@ $(document).on('click', '.projectGalleryImage', function(){
 	});
 });
 
-$("#popUpToTop").click(function() {
-	console.log("clicked bru");
-    $('html, body, #projectContainer').animate({
-        scrollTop: $("#projectTitle").offset().top
-    }, 1800);
+scrollToElement("#popUpToTop", "#projectTitle", 1400);
+scrollToElement(".serviceButton", "#serviceContainer", 1400);
+scrollToElement(".teamButton", "#teamContainer", 1400);
+scrollToElement(".contactButton", "#contactContainer", 1400);
+scrollToElement("#downArrow", "#serviceContainer", 1000);
+
+// Scrolls to elements on 'click'.
+function scrollToElement(trigger, target, time){
+	$(trigger).click(function() {
+	    $("html, body, #projectContainer").animate({
+	        scrollTop: $(target).offset().top
+	    }, time);
+	});
+};
+
+$("#closeMenu, .menuListItem").click(function(){
+	closeMenu();
+	closeOverlays();
 });
 
-$("#closePopUp, #closePopUpIcon").click(function(){
+$("#closePopUp, #closePopUpIcon, .closeButtonCircle").click(function(){
 	$("#popUpContainer").fadeOut(400);
 	$("#projectImagesContainer").empty();
 	pageLoaded();
@@ -234,10 +263,10 @@ $("#hamburgerMenu").click(function(){
 	$("body").css('overflow','hidden');
 });
 
-$("#closeMenu").click(function(){
+function closeMenu(){
 	$("#overlayMenu").fadeOut(300);
 	$("body").css('overflow','auto');
-});
+}
 
 $("#landingPageContainer").fadeIn(600);
 
@@ -248,6 +277,14 @@ $("#logo, #profileBackButton, .backToTop, #popUpHome").click(function(){
 	scrollToTop();
 	closeOverlays();
 });
+
+$("#closeStatsOverlay").click(function(){
+	$("#graphOverlayContainer").fadeOut(500);
+});
+
+$("#profileStatButton").click(function(){
+	$("#graphOverlayContainer").fadeIn(500);
+})
 
 // Function which loads elements on scroll.
 function scrollLoad(element, value, timer){
@@ -272,6 +309,8 @@ function scrollLoadImages(element, value){
 function scrollToTop(){
 	$('html, body').animate({scrollTop: 0}, 600);
 }
+
+
 
 // Closes all overlays currently open and sets mainContainer back to normal
 function closeOverlays(){

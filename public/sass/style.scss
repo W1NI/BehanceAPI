@@ -244,6 +244,7 @@ nav{
 	width: auto;
 	letter-spacing: 6px;
 	border: 2px solid $secondaryColor;
+	background-color: $primaryColor;
 	padding: 6px 23px 6px 23px;
 	border-radius: 6px;
 	font-size: 1em;
@@ -258,6 +259,14 @@ nav{
 	&:hover{
 		font-weight: 500;
 		color: $primaryColor;
+	}
+}
+
+.homePageButton{
+	font-size: 1.3em;
+	letter-spacing: 9px;
+	p{
+		margin-right: -9px;
 	}
 }
 
@@ -562,9 +571,9 @@ nav{
 	}
 }
 
-#closePopUpIcon{
+.closePopUpIcon{
 	font-size: 1.3em;
-	color: $primaryColor;
+	color: $primaryColor !important;
 	margin: 0 auto;
 }
 
@@ -835,9 +844,116 @@ footer{
     font-size: 1em;
 }
 
-.projectText{
+#graphOverlayContainer{
 	width: 100%;
-	padding: 40px;
-	font-size: 1.3em;
+	height: 100vh;
+	z-index: 50;
+	position: fixed;
+	padding: 60px;
+	background-color: rgba(9, 10, 27, 0.90);
+	padding: 60px;
+	display: none;
+}
+
+#graphContainer{
+	width: 50%;
+	height: 50%;
+}
+
+#statsContainer{
+	background-color: $primaryColor;
+	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+	padding: 80px 40px 80px 40px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 1;
+	// flex-direction: column;
+	position: relative;
+}
+
+#statInfoContainer{
+	width: 100%;
+	height: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+
+	.fa{
+		color: $secondaryColor;
+		font-size: 2em;
+		padding-bottom: 9px;
+	}
+}
+
+#statTitle{
+	width: 100%;
+	text-align: left;
+	font-size: 1em;
+	letter-spacing: 5px;
+	text-transform: uppercase;
 	color: white;
+
+	span{
+		color: $secondaryColor;
+	}
+}
+
+#statNameTitle{
+	width: 100%;
+	text-align: left;
+	color: $secondaryColor;
+	letter-spacing: 6px;
+	font-size: 2em;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.statInfo{
+	font-size: 1em;
+	letter-spacing: 5px;
+	text-align: left;
+	width: 19%;
+	border-left: 2px solid white;
+	padding-left: 25px;
+	display: inline-block;
+	cursor: pointer;
+	transition-duration: 80ms;
+}
+
+.statHeader{
+	height: 20%;
+	font-size: 1em;
+	letter-spacing: 5px;
+	padding-bottom: 5px;
+}
+
+.statValue{
+	font-size: 2em;
+	color: $secondaryColor;
+}
+
+#featuresContainer{
+	width: 50%;
+	height: 20%;
+	padding-top: 30px;
+}
+
+.featuredRibbon{
+	opacity: 0.8;
+	padding-right: 10px;
+	display: inline-block;
+	cursor: pointer;
+
+	&:hover{
+		opacity: 1;
+	}
+}
+
+.featuresTitle{
+	letter-spacing: 4px;
+	font-size: 0.7em;
+	padding-bottom: 9px;
 }
