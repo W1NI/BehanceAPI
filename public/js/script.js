@@ -1,4 +1,4 @@
-var key = "6Hhngb0Y2jMMbQTZzDouhofBd97odGva";
+var key = "lVoQldj4zQhNgZMm3kucpOgeBztvsfY8";
 var userId;
 var projectId;
 
@@ -213,6 +213,7 @@ scroll("#olContact", "#contactContainer", 1300);
 scroll("#serviceBTN", "#serviceContainer", 1300);
 scroll("#teamBTN", "#teamContainer", 1300);
 scroll("#contactBTN", "#contactContainer", 1300);
+scroll("#downArrow", "#serviceContainer", 1200);
 
 
 $("#closePopUp, #closePopUpIcon").click(function(){
@@ -251,9 +252,6 @@ $("#hamburgerMenu").click(function(){
 function closeMenu(){
 	$("body").css('overflow','auto');
 	$("#overlayMenu").fadeOut(300);
-	$("#overlayProfile").fadeOut(500);
-	$("#masterContainer").css("position","relative");
-	// $("footer").css("position","relative");
 }
 
 
