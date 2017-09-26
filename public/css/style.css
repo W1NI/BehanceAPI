@@ -324,4 +324,342 @@ nav {
   margin: 0 auto;
   width: 300px; }
 
+.profileButton {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+  display: block; }
+
+#overlayProfile {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 100px;
+  position: relative;
+  display: none;
+  transition-duration: 500ms; }
+
+#sideBar {
+  background: #0a0b27;
+  width: 30%;
+  overflow: auto;
+  padding-top: 50px; }
+
+#sideBarInfoContainer {
+  color: white;
+  padding-bottom: 50px;
+  line-height: 45px;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1em;
+  letter-spacing: 1px; }
+  #sideBarInfoContainer .fa {
+    color: white;
+    padding-right: 7px; }
+
+.sideBarInfo {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between; }
+
+.sideBarHeader {
+  color: #0eedb9; }
+
+#ownerName {
+  font-size: 1.4em;
+  color: white;
+  margin-bottom: 10px; }
+
+#projectGalleryOverlay {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding-bottom: 500px;
+  overflow: auto; }
+
+.coverImage {
+  width: 33%;
+  padding: 10px;
+  height: 300px;
+  overflow: hidden;
+  transition-duration: 400ms; }
+  .coverImage:hover {
+    cursor: pointer; }
+
+#projectProfileImage {
+  margin-bottom: 30px; }
+
+#popUpContainer {
+  overflow: auto;
+  width: 100%;
+  height: 100vh;
+  z-index: 50;
+  position: absolute;
+  padding: 60px;
+  text-align: center;
+  background-color: rgba(9, 10, 27, 0.9);
+  display: none; }
+
+#projectContainer {
+  background-color: #0a0b27;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+  position: relative; }
+
+#projectImagesContainer {
+  width: 100%;
+  padding-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap; }
+  #projectImagesContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; }
+
+.popUpButton {
+  margin: 0px 10px 0px 10px; }
+
+.closeButtonCircle {
+  background-color: #0eedb9;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  transition-duration: 100ms; }
+  .closeButtonCircle:hover {
+    opacity: 0.7; }
+
+#closePopUpIcon {
+  font-size: 1.3em;
+  color: #0a0b27;
+  margin: 0 auto; }
+
+.projectVideo {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+  position: relative; }
+  .projectVideo iframe {
+    border: none;
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    left: 0;
+    top: 0; }
+
+.projectImage {
+  width: 100%;
+  height: auto; }
+  .projectImage img {
+    width: 100%; }
+
+#projectTitle {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 15px; }
+
+#projectStats {
+  margin-bottom: 20px; }
+  #projectStats .fa {
+    margin-right: 7px; }
+
+.stat {
+  font-size: 1em;
+  display: inline-block;
+  padding: 0px 11px 0px 11px; }
+
+.fa {
+  color: #0eedb9; }
+
+#behanceLink {
+  transition-duration: 200ms;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  position: relative;
+  width: auto;
+  display: inline-block; }
+  #behanceLink:hover {
+    border-color: #0eedb9; }
+
+.linkHover {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  transition-duration: 200ms;
+  background-color: white; }
+
+#contactContent {
+  width: 90%;
+  margin: 0 auto; }
+
+#formContainer form {
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; }
+
+.inputContainer {
+  width: 47%; }
+
+.inputField {
+  background-color: #0a0b27;
+  width: 100%;
+  letter-spacing: 1px;
+  border: 1px solid #0eedb9;
+  padding: 15px 10px 15px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  outline: none;
+  opacity: 1;
+  transition-duration: 300ms;
+  color: white; }
+  .inputField::-webkit-input-placeholder {
+    opacity: 0.9;
+    color: white; }
+
+.textAreaContainer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border: none;
+  width: 100%; }
+
+#textArea {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #0eedb9;
+  border-radius: 5px;
+  background-color: #0a0b27;
+  color: white;
+  outline: none;
+  letter-spacing: 1px;
+  font-size: 0.9em; }
+  #textArea::placeholder {
+    color: white;
+    opacity: 0.8; }
+
+#submitButton {
+  background-color: #0a0b27;
+  color: white;
+  margin-top: 60px;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 40px; }
+  #submitButton:hover {
+    color: #0a0b27; }
+
+#loadPageOverlay {
+  width: 100%;
+  height: 100vh;
+  background-color: #0a0b27;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+  align-items: center; }
+
+svg path,
+svg rect {
+  fill: #0eedb9; }
+
+.loader {
+  height: auto;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top; }
+
+footer {
+  width: 100%; }
+
+#footerContent {
+  border-top: 1px solid white;
+  width: 90%;
+  padding-top: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.footerBlock {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+
+#footerNav {
+  width: 100%;
+  font-size: 0.8em;
+  text-align: center;
+  letter-spacing: 3px;
+  cursor: pointer;
+  padding-bottom: 40px; }
+  #footerNav li {
+    display: inline-block;
+    padding: 0px 12px 0px 12px; }
+    #footerNav li:hover {
+      color: #0eedb9; }
+
+#socialLinks {
+  font-size: 1.3em;
+  padding-bottom: 40px; }
+  #socialLinks .fa {
+    padding-right: 20px;
+    padding-left: 20px;
+    cursor: pointer; }
+    #socialLinks .fa:hover {
+      opacity: 0.5; }
+
+#copyRight {
+  letter-spacing: 3px;
+  font-size: 0.5em;
+  padding-bottom: 40px;
+  color: white; }
+
+#footerLogo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  padding-bottom: 40px; }
+  #footerLogo img {
+    max-height: 100%; }
+
+#teamText {
+  width: 80%;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1em; }
+
+.projectText {
+  width: 100%;
+  padding: 40px;
+  font-size: 1.3em;
+  color: white; }
+
 /*# sourceMappingURL=style.css.map */
