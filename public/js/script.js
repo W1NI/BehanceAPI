@@ -1,4 +1,4 @@
-var key = "3KmqsyCwcUQsMj4YVwuNodQ32jzvUyWx";
+var key = "6Hhngb0Y2jMMbQTZzDouhofBd97odGva";
 var userId;
 var projectId;
 
@@ -194,12 +194,26 @@ $(document).on('click', '.projectGalleryImage', function(){
 	});
 });
 
-$("#popUpToTop").click(function() {
-	console.log("clicked bru");
-    $('html, body, #projectContainer').animate({
-        scrollTop: $("#projectTitle").offset().top
-    }, 1800);
-});
+function scroll(element, target, speed){
+    $(element).click(function() {
+        console.log("clicked bru");
+        $('html, body, #projectContainer').animate({
+            scrollTop: $(target).offset().top
+        }, speed);
+    });
+}
+//overlay menu scroll clicks//
+scroll("#popUpToTop", "#projectTitle", 1300);
+scroll("#olHome", "#landingPageContainer", 1300);
+scroll("#olServices", "#serviceContainer", 1300);
+scroll("#olTeam", "#teamContainer", 1300);
+scroll("#olContact", "#contactContainer", 1300);
+
+//main BTN scroll click//
+scroll("#serviceBTN", "#serviceContainer", 1300);
+scroll("#teamBTN", "#teamContainer", 1300);
+scroll("#contactBTN", "#contactContainer", 1300);
+
 
 $("#closePopUp, #closePopUpIcon").click(function(){
 	$("#popUpContainer").fadeOut(400);
@@ -234,10 +248,18 @@ $("#hamburgerMenu").click(function(){
 	$("body").css('overflow','hidden');
 });
 
-$("#closeMenu").click(function(){
-	$("#overlayMenu").fadeOut(300);
+function closeMenu(){
 	$("body").css('overflow','auto');
-});
+	$("#overlayMenu").fadeOut(300);
+	$("#overlayProfile").fadeOut(500);
+	$("#masterContainer").css("position","relative");
+	// $("footer").css("position","relative");
+}
+
+
+$("#closeMenu, .menuListItem").click(function(){
+    closeMenu();
+})
 
 $("#landingPageContainer").fadeIn(600);
 
