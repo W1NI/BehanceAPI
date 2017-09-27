@@ -34,22 +34,10 @@ module.exports =  function(grunt) {
 			}
 		},
 
-		sass:{
-			dist:{
-				files:{
-					"public/css/style.css":"public/sass/style.scss"
-				}
-			}
-		},
-
 		watch:{
 			cssmin:{
 				files:["public/css/style.css"],
 				tasks:["cssmin"]
-			},
-			sass:{
-				files:["public/sass/style.scss"],
-				tasks:["sass"]
 			}
 		}
 	});
@@ -57,12 +45,10 @@ module.exports =  function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask("mincss", ["cssmin"]);
 	grunt.registerTask("minjs", ["uglify"]);
-	grunt.registerTask("jshint", ["jshint"]);
-	grunt.registerTask("gruntsass", ["sass"]);
+	grunt.registerTask("jslint", ["jshint"]);
 	grunt.registerTask("gruntwatch", ["watch"]);
 };

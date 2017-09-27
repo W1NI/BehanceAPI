@@ -26,6 +26,14 @@ $(document).on('mouseover', '.profileImage', function(){
 	$(this).next(".teamMemberName").css("color","white");
 });
 
+// hover effect for the stats pop up window
+$(document).on('mouseover', '.statInfo', function(){
+		$(this).css("border-left","6px solid #0eedb9");
+
+}).on('mouseout', '.statInfo', function(){
+	$(this).css("border-left","2px solid white");
+});
+
 // Behance link hover effect
 $(document).on('mouseover', '#behanceLink', function(){
 	$(this).find(".linkHover").css("width","100%");
