@@ -83,7 +83,8 @@ nav{
 
 #hamburgerMenu{
 	cursor: pointer;
-	width: 25%;
+	width: 37px;
+	height: 30px;
 
 	&:hover{
 		opacity: 0.5;
@@ -103,7 +104,7 @@ nav{
 
 	li{
 		margin-bottom: 40px;
-		font-size: 3em;
+		font-size: 1.5em;
 		font-weight: 600;
 		position: relative;
 		width: auto;
@@ -113,10 +114,8 @@ nav{
 	}
 
 	.fa{
-		font-size: 1.3em;
 		color: white;
 		padding-left: 20px;
-		padding-top: 90px;
 		cursor: pointer;
 
 		&:hover{
@@ -128,10 +127,17 @@ nav{
 #menuList{
 	width: 100%;
 	display: inline-block;
+	letter-spacing: 4px;
 }
 
 .menuListItem{
+	width: auto;
+	height: 40px;
+	color: white;
 
+	&:hover{
+		color: $secondaryColor;
+	}
 }
 
 .listHover{
@@ -151,7 +157,6 @@ nav{
 	cursor: pointer;
 
 	img{
-		height: 100%;
 		&:hover{
 			opacity: 0.6;
 		}
