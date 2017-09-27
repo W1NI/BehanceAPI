@@ -1,6 +1,11 @@
-var key = "cGSscYxQzNMAEm8s4MixzfJ1NzXqS7zo";
 var userId;
 var projectId;
+var key;
+
+// Gets the Behance api key placed in key.json
+$.get( "http://localhost:3000/key", function(data) {
+	key = data.key;
+});
 
 // Get the usernames of the team to use for API calls.
 $.get( "http://localhost:3000/behanceIDs", function(data) {
@@ -208,6 +213,7 @@ $(document).on('click', '.projectGalleryImage', function(){
 
 function scroll(element, target, speed){
    $(element).click(function() {
+	   closeOverlays();
        $('html, body, #projectContainer').animate({
            scrollTop: $(target).offset().top
        }, speed);
@@ -242,13 +248,6 @@ window.addEventListener('click', function(e){
 	  $("#projectImagesContainer").empty();
   }
 });
-
-// window.addEventListener('click', function(e){
-//   if (document.getElementById('statsContainer').contains(e.target)){
-//   } else{
-// 	  $("#statOverlayContainer").fadeOut(500);
-//   }
-// });
 
 $("#popUpHome").click(function(){
 	$("#loadPageOverlay").fadeIn(200, function() {
@@ -381,4 +380,58 @@ $("#submitButton").click(function(){
 		$("#inputName, #inputEmail, #textArea").css({"opacity":"0.5","pointer-events":"none"});
 	}
 
+});
+
+// Button hover effect for the main buttons. Makes a full width div appear in button.
+$(".button").hover(function(){
+		$(this).find(".buttonHoverEffect").css("width","100%");
+	},
+	function(){
+		$(this).find(".buttonHoverEffect").css("width","0%");
+	}
+);
+
+// Menu list hover function. Displays a thin block beneath the list item name.
+$(".menuListItem").hover(function(){
+		$(this).find(".listHover").css("width","100%");
+	},
+	function(){
+		$(this).find(".listHover").css("width","0%");
+	}
+);
+
+// profile image hover effect
+$(document).on('mouseover', '.profileImage', function(){
+		$(".profileImage").addClass("spotlight");
+		$(this).removeClass("spotlight").next(".teamMemberName").css("color","#0eedb9");
+
+}).on('mouseout', '.profileImage', function(){
+	$(".profileImage").removeClass("spotlight");
+	$(this).next(".teamMemberName").css("color","white");
+});
+
+// hover effect for the stats pop up window
+$(document).on('mouseover', '.statInfo', function(){
+		$(this).css("border-left","6px solid #0eedb9");
+
+}).on('mouseout', '.statInfo', function(){
+	$(this).css("border-left","2px solid white");
+});
+
+// Behance link hover effect
+$(document).on('mouseover', '#behanceLink', function(){
+	$(this).find(".linkHover").css("width","100%");
+}).on('mouseout', '#behanceLink', function(){
+	$(this).find(".linkHover").css("width","0%");
+});
+
+
+// profile image hover effect
+$(document).on('mouseover', '.coverImage', function(){
+		$(".coverImage").addClass("spotlight");
+		$(this).removeClass("spotlight").next(".teamMemberName").css("color","#0eedb9");
+
+}).on('mouseout', '.coverImage', function(){
+	$(".coverImage").removeClass("spotlight");
+	$(this).next(".teamMemberName").css("color","white");
 });
