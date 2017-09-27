@@ -131,13 +131,22 @@ nav{
 }
 
 .menuListItem{
+	color: $secondaryColor !important;
+	font-size: 1.2em;
 	width: auto;
 	height: 40px;
 	color: white;
+	letter-spacing:13px;
+	margin-right: -16px;
+	text-transform: uppercase;
 
 	&:hover{
 		color: $secondaryColor;
 	}
+}
+
+#menuSocialLinks{
+	font-size: 1.8em;
 }
 
 .listHover{
@@ -148,6 +157,7 @@ nav{
 	left: 0;
 	bottom: 0;
 	background-color: white;
+	margin-left: -8px;
 }
 
 #closeMenu{
@@ -215,18 +225,6 @@ nav{
 	transition-duration: 100ms;
 	cursor: pointer;
 
-}
-
-.waveContainer{
-	margin-top: -90px;
-	margin-bottom: -10px;
-	max-width: 100%;
-	pointer-events: none;
-	display: none;
-}
-
-.wave{
-	max-width: 100%;
 }
 
 .buttonContainer{
@@ -307,7 +305,6 @@ nav{
 	color: white;
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
 }
 
 #serviceContent{
@@ -721,11 +718,6 @@ nav{
 	outline: none;
 	letter-spacing: 1px;
 	font-size: 0.9em;
-
-	&::placeholder{
-		color: white;
-		opacity: 0.8
-	}
 }
 
 #submitButton{
