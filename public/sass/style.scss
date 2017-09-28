@@ -114,7 +114,7 @@ nav{
 	}
 
 	.fa{
-		color: white;
+		color: #ffffff;
 		padding-left: 20px;
 		cursor: pointer;
 
@@ -135,7 +135,7 @@ nav{
 	font-size: 1.2em;
 	width: auto;
 	height: 40px;
-	color: white;
+	color: #ffffff;
 	letter-spacing:13px;
 	margin-right: -16px;
 	text-transform: uppercase;
@@ -156,7 +156,7 @@ nav{
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	background-color: white;
+	background-color: #ffffff;
 	margin-left: -8px;
 }
 
@@ -290,7 +290,7 @@ nav{
 }
 
 .blockText{
-	color: white;
+	color: #ffffff;
 	width: 90%;
 	margin: 0 auto;
 	padding-top: 25px;
@@ -302,9 +302,10 @@ nav{
 
 #serviceContainer{
 	background-color: $primaryColor;
-	color: white;
+	color: #ffffff;
 	display: flex;
 	align-items: center;
+	justify-content: space-evenly;
 }
 
 #serviceContent{
@@ -454,7 +455,7 @@ nav{
 }
 
 #sideBarInfoContainer{
-	color: white;
+	color: #ffffff;
 	padding-bottom: 50px;
 	line-height: 45px;
 	width: 70%;
@@ -463,9 +464,13 @@ nav{
 	letter-spacing: 1px;
 
 	.fa{
-		color: white;
+		color: #ffffff;
 		padding-right: 7px;
 	}
+}
+
+#userProfileImage{
+	cursor: default !important;
 }
 
 .sideBarInfo{
@@ -480,7 +485,7 @@ nav{
 
 #ownerName{
 	font-size: 1.4em;
-	color: white;
+	color: #ffffff;
 	margin-bottom: 10px;
 }
 
@@ -490,12 +495,12 @@ nav{
 	display: flex;
 	flex-grow: 1;
 	flex-wrap: wrap;
-	padding-bottom: 500px;
+	padding-bottom: 100px;
 	overflow: auto;
 }
 
 .coverImage{
-	width: 33%;
+	width: 24%;
 	padding: 10px;
 	height: 300px;
 	overflow: hidden;
@@ -610,7 +615,7 @@ nav{
 #projectTitle{
 	letter-spacing: 4px;
 	text-transform: uppercase;
-	color: white;
+	color: #ffffff;
 	font-size: 1.5em;
 	margin-bottom: 15px;
 }
@@ -653,7 +658,7 @@ nav{
 	height: 2px;
 	width: 0%;
 	transition-duration: 200ms;
-	background-color: white;
+	background-color: #ffffff;
 }
 
 #contactContent{
@@ -686,14 +691,14 @@ nav{
 	outline: none;
 	opacity: 1;
 	transition-duration: 300ms;
-	color: white;
+	color: #ffffff;
 
 	&:focus{
 	}
 
 	&::-webkit-input-placeholder{
 		opacity: 0.9;
-		color: white;
+		color: #ffffff;
 	}
 
 	&:hover{
@@ -714,15 +719,20 @@ nav{
 	border: 1px solid $secondaryColor;
 	border-radius: 5px;
 	background-color: $primaryColor;
-	color: white;
+	color: #ffffff;
 	outline: none;
 	letter-spacing: 1px;
 	font-size: 0.9em;
+
+	&::placeholder{
+		color: #ffffff;
+		opacity: 0.7;
+	}
 }
 
 #submitButton{
 	background-color: $primaryColor;
-	color: white;
+	color: #ffffff;
 	margin-top: 60px;
 	cursor: pointer;
 	margin: 0 auto;
@@ -776,7 +786,7 @@ footer{
 }
 
 #footerContent{
-	border-top: 1px solid white;
+	border-top: 1px solid #ffffff;
 	width: 90%;
 	padding-top: 40px;
 	margin: 0 auto;
@@ -831,7 +841,7 @@ footer{
 	letter-spacing: 3px;
 	font-size: 0.5em;
 	padding-bottom: 40px;
-	color: white;
+	color: #ffffff;
 }
 
 #footerLogo{
@@ -903,7 +913,7 @@ footer{
 	font-size: 1em;
 	letter-spacing: 5px;
 	text-transform: uppercase;
-	color: white;
+	color: #ffffff;
 
 	span{
 		color: $secondaryColor;
@@ -925,7 +935,7 @@ footer{
 	letter-spacing: 5px;
 	text-align: left;
 	width: 19%;
-	border-left: 2px solid white;
+	border-left: 2px solid #ffffff;
 	padding-left: 25px;
 	display: inline-block;
 	cursor: pointer;
@@ -1021,4 +1031,17 @@ animation-duration:2s;
 	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
 	40% {transform: translateY(-10px);}
 	60% {transform: translateY(-10px);}
+}
+
+// Responsive code for large screens
+@media only screen and (min-width: 1600px) {
+	.coverImage{
+		width: 19%;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	#landingPageContent{
+		padding-top: 350px;
+	}
 }
