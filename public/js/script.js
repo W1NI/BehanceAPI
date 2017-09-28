@@ -211,6 +211,7 @@ $(document).on('click', '.projectGalleryImage', function(){
 	});
 });
 
+// closes overlays and scrolls
 function scroll(element, target, speed){
    $(element).click(function() {
 	   closeOverlays();
@@ -219,8 +220,14 @@ function scroll(element, target, speed){
        }, speed);
    });
 }
+//popup button scroll to top on click//
+$("#popUpToTop").click(function() {
+	$('html, body, #projectContainer').animate({
+		scrollTop: $("#projectTitle").offset().top
+	}, 1300);
+});
+
 //overlay menu scroll clicks//
-scroll("#popUpToTop", "#projectTitle", 1300);
 scroll("#olHome", "#landingPageContainer", 1300);
 scroll("#olServices", "#serviceContainer", 1300);
 scroll("#olTeam", "#teamContainer", 1300);
